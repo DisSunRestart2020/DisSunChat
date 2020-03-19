@@ -1,0 +1,12 @@
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\bin\Debug\netstandard2.0\DisSunChat.Services.deps.json
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\bin\Debug\netstandard2.0\DisSunChat.Services.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\bin\Debug\netstandard2.0\DisSunChat.Services.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\bin\Debug\netstandard2.0\DisSunChat.Common.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\bin\Debug\netstandard2.0\DisSunChat.Common.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.csprojAssemblyReference.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.csproj.CoreCompileInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.AssemblyInfoInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.AssemblyInfo.cs
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.csproj.CopyComplete
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DissunChat.Services\obj\Debug\netstandard2.0\DisSunChat.Services.pdb

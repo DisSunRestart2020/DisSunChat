@@ -1,0 +1,83 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+}
+
+.triangle {
+    margin: 0px auto;
+    width: 100%;
+    background-color: #ebebe9;
+}
+
+    .triangle ul {
+        padding: 10px;
+    }
+
+    .triangle li {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+        .triangle li span {
+            position: relative;
+            border-radius: 7px;
+            background-color: #a6e860;
+            padding: 6px 10px 8px 10px;
+            z-index: 1;
+        }
+
+    .triangle .textLeft span {
+        background-color: white;
+    }
+
+    .triangle li.textLeft:before {
+        content: url("../images/leftImg.png");
+        box-sizing: border-box;
+        position: relative;
+        left: -10px;
+        top: 9px;
+    }
+
+    .triangle li.textLeft span:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-right: 8px solid white;
+        position: absolute;
+        top: 8px;
+        left: -16px;
+    }
+
+    .triangle li.textRight:after {
+        content: url("../images/rightImg.png");
+        box-sizing: border-box;
+        position: relative;
+        right: -10px;
+        top: 9px;
+    }
+
+    .triangle li.textRight span:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-left: 8px solid #a6e860;
+        position: absolute;
+        top: 8px;
+        right: -16px;
+    }
+
+li {
+    list-style: none;
+}
+
+.textRight {
+    text-align: right;
+}

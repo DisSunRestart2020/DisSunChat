@@ -1,0 +1,17 @@
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\bin\Debug\netstandard2.0\DisSunChat.Common.deps.json
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\bin\Debug\netstandard2.0\DisSunChat.Common.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\bin\Debug\netstandard2.0\DisSunChat.Common.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\obj\Debug\netstandard2.0\DisSunChat.Common.csproj.CoreCompileInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\obj\Debug\netstandard2.0\DisSunChat.Common.AssemblyInfoInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\obj\Debug\netstandard2.0\DisSunChat.Common.AssemblyInfo.cs
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\obj\Debug\netstandard2.0\DisSunChat.Common.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\CommonCore\obj\Debug\netstandard2.0\DisSunChat.Common.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\bin\Debug\netstandard2.0\DisSunChat.Common.deps.json
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\bin\Debug\netstandard2.0\DisSunChat.Common.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\bin\Debug\netstandard2.0\DisSunChat.Common.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.csproj.CoreCompileInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.AssemblyInfoInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.AssemblyInfo.cs
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Common\obj\Debug\netstandard2.0\DisSunChat.Common.csprojAssemblyReference.cache

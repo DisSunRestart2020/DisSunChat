@@ -1,0 +1,13 @@
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\DisSunChat.Repos.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\DisSunChat.Repos.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\EntityFramework.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\EntityFramework.SqlServer.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\EntityFramework.xml
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\EntityFramework.SqlServer.xml
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.csproj.CoreCompileInputs.cache
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.csproj.CopyComplete
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\bin\Debug\DisSunChat.Repos.dll.config
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.Migrations.FirstCreate.resources
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.Repos\obj\Debug\DisSunChat.Repos.csproj.GenerateResource.cache
