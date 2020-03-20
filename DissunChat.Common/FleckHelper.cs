@@ -59,7 +59,7 @@ namespace DisSunChat.Common
         public void SendMessage(string requestMsg)
         {           
             string respondStr = "{\"ClientName\":\"172.16.2.4:00\",\"CreateTime\":\"2020-03-03 12:45:24\",\"ChatContent\":\"这里是内容\",\"PrevMsg\":\"" + requestMsg +"\"}";
-            connSocket.Send("信息:" + respondStr);
+            connSocket.Send(respondStr);
             
         }
 

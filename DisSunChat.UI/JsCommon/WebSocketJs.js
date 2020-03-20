@@ -25,17 +25,14 @@ var wsClose = function () {
     console.log("已经关闭连接");
 }
 
-var wsMessage = function (msg) {
-    console.log("接收到消息:" + msg.data);
-}
 
 var wsError = function (evt) {
     console.log("异常:" + evt);
 }
 
-var wsSend = function () {
-    var msg = $("#txtMsg").val();
-    if (socket == null || msg == "") return false;
-    console.log("启动发射");
-    socket.send(msg);
+var wsSend = function (sMsg) {     
+    if (socket == null || sMsg == "") return false;
+    console.log("消息成功发出");
+    socket.send(sMsg);
 }
+ 

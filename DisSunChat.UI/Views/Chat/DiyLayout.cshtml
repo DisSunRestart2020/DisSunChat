@@ -3,7 +3,9 @@
     ViewBag.Title = "公共聊天室";
 }
 
+<script src="~/JsCommon/WebSocketJs.js?v=4"></script>
 <script src="~/JsCommon/BoxScript3.js?v=4"></script>
+
 <link rel="stylesheet" href="~/StyleCommon/BoxCss3.css?v=4" type="text/css" />
 
 <div class="mainDiv">
@@ -54,102 +56,13 @@
             </div>
             <div class="clear"></div>
         </div>
-
-        <div class="dialogBox leftDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
-                <div class="msgRow">我很快就回去了                ！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox rightDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
-                <div class="msgRow">不会回来，滚出去！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox leftDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
-                <div class="msgRow">好的好的！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox leftDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
-                <div class="msgRow">我很快就回去了                ！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox rightDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
-                <div class="msgRow">不会回来，滚出去！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox leftDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
-                <div class="msgRow">好的好的！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox leftDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
-                <div class="msgRow">我很快就回去了！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox rightDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
-                <div class="msgRow">不会回来，滚出去！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox rightDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
-                <div class="msgRow">不会回来，滚出去！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="dialogBox rightDialog">
-            <div class="imgBox"></div>
-            <div class="msgBox">
-                <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
-                <div class="msgRow">不会回来，滚出去！</div>
-            </div>
-            <div class="clear"></div>
-        </div>
+         
 
         <div class="dialogBox dialogGap"></div>
     </div>
     <div class="keyboardDiv ">
         <div class="leftDiv"><a href="javascript:void(0)" onclick="PraiseEvent()"><img src="~/images/praise.jpg" class="praiseImg" /></a></div>
-        <div class="centerDiv"><textarea class="chatContentTxt"></textarea></div>
+        <div class="centerDiv"><textarea class="chatContentTxt" id="contentTxt"></textarea></div>
         <div class="rightDiv"><input type="button" value="发 送" class="submitBtn" onclick="SendMsgEvent()" /></div>
     </div>
 </div>
