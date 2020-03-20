@@ -109,6 +109,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\leftImg.png" />
+    <Content Include="images\payfor.jpg" />
+    <Content Include="images\praise.jpg" />
     <Content Include="images\rightImg.png" />
     <Content Include="JsCommon\BoxScript3.js" />
     <Content Include="JsCommon\BoxScript2.js" />

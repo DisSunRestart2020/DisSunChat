@@ -1,1 +1,214 @@
-﻿
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+}
+
+.mainDiv {
+    margin: 0px auto;
+    width: 100%;
+}
+
+.contentDiv {
+    width: 100%;
+    background-color: #EDEDED;
+    position: absolute;
+    height: 100%;
+    overflow: scroll;
+}
+
+.dialogBox {
+    /*border: double 1px blue;*/
+    margin: 5px 0 5px 0;
+    display: block;
+}
+
+.dialogGap {
+    height: 45px;
+}
+
+
+.dialogBox .timeRow {
+    font-size: 8px;
+    color: #999999;
+}
+
+.dialogBox .msgRow {
+    /*border: solid 1px yellow;*/
+    border-radius: 7px;
+    padding: 8px 5px 8px 5px;
+}
+
+.dialogBox .imgBox {
+    width: 35px;
+    /*border: solid 1px red;*/
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+    margin-top: 5px;
+}
+
+.dialogBox .msgBox {
+    width: 50%;
+    /*border: solid 1px green;*/
+    display: inline-block;
+    vertical-align: top;
+}
+
+.clear {
+    clear: both;
+}
+
+.leftDialog .imgBox {
+    float: left;
+    background: url(../images/leftImg.png) no-repeat 32px 32px;
+    background-position: top;
+}
+
+.leftDialog .msgBox {
+    float: left;
+}
+
+
+.leftDialog .msgRow {
+    background-color: #A1E85C;
+}
+
+.rightDialog {
+    text-align: right;
+}
+
+    .rightDialog .imgBox {
+        float: right;
+        background: url(../images/rightImg.png) no-repeat 32px 32px;
+        background-position: top;
+        text-align: right;
+    }
+
+    .rightDialog .msgBox {
+        float: right;
+        text-align: right;
+    }
+
+    .rightDialog .msgRow {
+        background-color: #FFFFFF;
+    }
+
+
+.keyboardDiv {
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    border-top: solid 1px #C5C5C7;
+    width: 100%;
+    background-color: #F6F6F6;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}   
+
+    .keyboardDiv .leftDiv {
+        -moz-box-flex: 1;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+    }
+
+
+    .keyboardDiv .centerDiv {
+        -moz-box-flex: 10;
+        -webkit-box-flex:10;
+        box-flex: 10;
+    }
+
+
+
+    .keyboardDiv .rightDiv {
+        -moz-box-flex:4;
+        -webkit-box-flex:4;
+        box-flex: 4;
+    }
+
+    .keyboardDiv .praiseImg {
+        width: 32px;
+        height: 32px;        
+        margin:5px;
+
+    }
+    .keyboardDiv .chatContentTxt {
+        width: 95%;
+        height: 35px;
+        margin: 2px 0 2px 0;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 1px dotted #C5C5C7;
+        background-color: #F6F6F6;
+        line-height: 32px;
+        font-size: 18px;
+    }
+    .keyboardDiv .submitBtn {
+        width: 50px;
+        height: 32px;
+        background-color: #F6F6F6;
+        margin: 5px 3px 5px 3px;
+        border-radius: 3px;
+        border: solid 1px #C5C5C7;
+    }
+
+
+
+.praiseBackground {
+    width: 100%;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=50);
+    position: fixed;
+    height: 100%;
+    z-index: 10;
+    background-color: #EEF2F8;
+}
+
+.praiseContent {
+    border: solid 1px #999999;
+    width: 80%;
+    position: fixed;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 9px 3px #99999B;
+    background-color: #fff;
+    z-index: 15;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 5%;
+    padding-top:20px;
+    font-size:15px;
+    font-weight:500;
+    line-height:30px;
+}
+
+
+.blur {
+    -webkit-filter: blur(5px); /* Chrome, Opera */
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.praisePayImg {
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    width: 150px;
+}
+.btnClose {
+    width: 80px;
+    height: 36px;
+    background-color: #F6F6F6;
+    margin: 1px 3px 20px 3px;
+    border-radius: 3px;
+    border: solid 1px #C5C5C7;
+}
