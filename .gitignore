@@ -1,0 +1,4 @@
+# git ignore file
+[Bb]in/
+[Oo]bj/
+[Ll]og/
