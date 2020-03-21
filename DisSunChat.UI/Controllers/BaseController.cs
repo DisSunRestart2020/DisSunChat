@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisSunChat.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,5 +9,6 @@ namespace DisSunChat.Controllers
 {
     public class BaseController: Controller
     {
+        public ChatService chatServier = new ChatService();
     }
 }

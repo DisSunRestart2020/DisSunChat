@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDao.cs" />
+    <Compile Include="ChatDao.cs" />
     <Compile Include="ChatDbContext.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="Migrations\202003180901387_FirstCreate.cs" />

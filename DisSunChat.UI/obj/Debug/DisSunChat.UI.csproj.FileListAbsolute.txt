@@ -53,7 +53,6 @@ E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\roslyn\vbc.rsp
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\roslyn\VBCSCompiler.exe
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\roslyn\VBCSCompiler.exe.config
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Common.dll
-E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\EntityFramework.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\EntityFramework.SqlServer.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -65,7 +64,6 @@ E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\System.Web.Webpag
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\System.Web.Webpages.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\System.Web.Webpages.Razor.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Common.pdb
-E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.pdb
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\EntityFramework.xml
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\EntityFramework.SqlServer.xml
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\System.Web.Razor.xml
@@ -93,3 +91,6 @@ E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\log4net.config
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\Fleck.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\log4net.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\log4net.xml
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.pdb
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.dll.config

@@ -108,6 +108,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\head\head01.png" />
+    <Content Include="images\head\head02.png" />
+    <Content Include="images\head\head03.png" />
+    <Content Include="images\head\head04.png" />
+    <Content Include="images\head\head05.png" />
+    <Content Include="images\head\head06.png" />
+    <Content Include="images\head\head07.png" />
+    <Content Include="images\head\head08.png" />
+    <Content Include="images\head\head09.png" />
+    <Content Include="images\head\head10.png" />
+    <Content Include="images\head\head11.png" />
     <Content Include="images\leftImg.png" />
     <Content Include="images\payfor.jpg" />
     <Content Include="images\praise.jpg" />
@@ -178,15 +189,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DisSunChat.Common\DisSunChat.Common.csproj">
-      <Project>{d0429d25-61c4-4697-a2da-6203f7f316cf}</Project>
+      <Project>{ad905a4e-9c28-4c0b-9763-209cc4a3a2a1}</Project>
       <Name>DisSunChat.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DisSunChat.Repos\DisSunChat.Repos.csproj">
       <Project>{025d1289-62f3-4bdd-82a2-ace416258805}</Project>
       <Name>DisSunChat.Repos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DissunChat.Services\DisSunChat.Services.csproj">
-      <Project>{f5faae4e-7351-42c3-912b-c09bd45fe840}</Project>
+    <ProjectReference Include="..\DisSunChat.Services\DisSunChat.Services.csproj">
+      <Project>{031ccfe7-ed7f-4924-a267-3b2d5ab2974a}</Project>
       <Name>DisSunChat.Services</Name>
     </ProjectReference>
   </ItemGroup>

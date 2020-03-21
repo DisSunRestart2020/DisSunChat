@@ -10,6 +10,12 @@ namespace DisSunChat.Common
     /// </summary>
     public interface IWebSocketHelper
     {
+        event SwitchHandle WsOpenEvent;
+        event SwitchHandle WsCloseEvent;
+        event ListenHandle ListenEvent;
+        event ResponseHandle ResponseEvent;
+
+
         void WebSocketInit();
         void SocketOpen();
 
@@ -17,8 +23,10 @@ namespace DisSunChat.Common
 
         void ListenMessage(string requestMsg);
 
-        void SendMessage(string requestMsg);
-        
-            
+        void SendMessage(string requestMsg);      
     }
+
+    public delegate int SwitchHandle();
+    public delegate int ListenHandle(string socketData,string clientFrom);
+    public delegate string ResponseHandle(string socketData, string clientFrom);
 }

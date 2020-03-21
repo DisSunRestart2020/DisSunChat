@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DisSunChat.Controllers
 {
-    public class ChatController : Controller
+    public class ChatController : BaseController
     {
         /// <summary>
         /// 聊天室首页
@@ -15,6 +15,10 @@ namespace DisSunChat.Controllers
         // GET: Chat
         public ActionResult Index()
         {
+
+            chatServier.CreateChatInfo("客户端" + DateTime.Now.Ticks, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+
+
             return View();
         }
 

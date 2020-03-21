@@ -10,10 +10,16 @@ namespace DisSunChat.Common
     /// </summary>
     public  class FleckHelper:IWebSocketHelper
     {
-        private IWebSocketConnection connSocket;
+        public event SwitchHandle WsOpenEvent;
+        public event SwitchHandle WsCloseEvent;
+        public event ListenHandle ListenEvent;
+        public event ResponseHandle ResponseEvent;
+
+        private IWebSocketConnection connSocket;         
         public void WebSocketInit()
         {
-            WebSocketServer wsServer = new WebSocketServer("ws://172.16.2.4:8181");
+            string websocketPath = Utils.GetConfig("websocketPath");
+            WebSocketServer wsServer = new WebSocketServer(websocketPath);
             wsServer.Start(socket =>
             {
                 connSocket = socket;
@@ -35,33 +41,57 @@ namespace DisSunChat.Common
 
         public void SocketOpen()
         {
-            Utils.SaveLog("成功建立长连接！");
+            //Utils.SaveLog("成功建立长连接！");
+            if(this.WsOpenEvent!=null)
+            {
+                this.WsOpenEvent();
+            }
         }
 
         public void SocketClose() 
         {
-            Utils.SaveLog("关闭长连接");
+            //Utils.SaveLog("关闭长连接");
+            if (this.WsCloseEvent != null)
+            {
+                this.WsCloseEvent();
+            }
         }
 
-
-        public void ListenMessage(string requestMsg)
+        public void ListenMessage(string socketData)
         {
-            
-            string cId = connSocket.ConnectionInfo.Id.ToString("N");
+          
             string cAddress= connSocket.ConnectionInfo.ClientIpAddress;
             string cPort= connSocket.ConnectionInfo.ClientPort.ToString();
-            string clientUrl = "["+ cId + "]"+ cAddress + ":" + cPort;
-            Utils.SaveLog("接收到客户端=" + clientUrl+"，具体信息="+ requestMsg);
+            string clientFrom= cAddress + ":" + cPort;
+
+            if (this.ListenEvent != null)
+            {
+                this.ListenEvent(socketData, clientFrom);
+            }
+
             //立刻反馈
-            SendMessage(requestMsg);
+            SendMessage(socketData);
         }
 
-        public void SendMessage(string requestMsg)
-        {           
-            string respondStr = "{\"ClientName\":\"172.16.2.4:00\",\"CreateTime\":\"2020-03-03 12:45:24\",\"ChatContent\":\"这里是内容\",\"PrevMsg\":\"" + requestMsg +"\"}";
-            connSocket.Send(respondStr);
-            
-        }
+        public void SendMessage(string socketData)
+        {
+            //string respondStr = "{\"ClientName\":\"172.16.2.4:00\",\"CreateTime\":\"2020-03-03 12:45:24\",\"ChatContent\":\"这里是内容\",\"PrevMsg\":\"" + requestMsg +"\"}";
+            string cAddress = connSocket.ConnectionInfo.ClientIpAddress;
+            string cPort = connSocket.ConnectionInfo.ClientPort.ToString();
+            string clientFrom = cAddress + ":" + cPort;
 
+            string resultData = "";
+            if (this.ResponseEvent != null)
+            {
+                resultData = this.ResponseEvent(socketData, clientFrom);
+            }
+
+            if (!string.IsNullOrWhiteSpace(resultData))
+            { 
+                connSocket.Send(resultData);
+            }                   
+        }
     }
+
+
 }

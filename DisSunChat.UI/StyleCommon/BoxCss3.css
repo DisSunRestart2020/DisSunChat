@@ -64,7 +64,7 @@ body {
 
 .leftDialog .imgBox {
     float: left;
-    background: url(../images/leftImg.png) no-repeat 32px 32px;
+    background: url(../images/head/head03.png) no-repeat 32px 32px;
     background-position: top;
 }
 
@@ -83,7 +83,7 @@ body {
 
     .rightDialog .imgBox {
         float: right;
-        background: url(../images/rightImg.png) no-repeat 32px 32px;
+        background: url(../images/head/head08.png) no-repeat 32px 32px;
         background-position: top;
         text-align: right;
     }

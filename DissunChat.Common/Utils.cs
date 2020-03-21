@@ -11,5 +11,16 @@ namespace DisSunChat.Common
             LoggerFunc c = LoggerFactory.CreateLoggerInstance();
             c.SaveErrorLogTxT(s);
         }
+        public static string GetConfig(string key)
+        {
+            try
+            {
+                return System.Configuration.ConfigurationManager.AppSettings[key].ToString();
+            }
+            catch
+            {
+                return "";
+            }
+        }
     }
 }
