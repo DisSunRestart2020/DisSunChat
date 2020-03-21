@@ -14,6 +14,7 @@ namespace DisSunChat.Common
         public event SwitchHandle WsCloseEvent;
         public event ListenHandle ListenEvent;
         public event ResponseHandle ResponseEvent;
+        private List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
 
         private IWebSocketConnection connSocket;         
         public void WebSocketInit()
@@ -25,10 +26,12 @@ namespace DisSunChat.Common
                 connSocket = socket;
 
                 socket.OnOpen = () => {
+                    allSockets.Add(socket);
                     SocketOpen();
                 };
 
                 socket.OnClose = () => {
+                    allSockets.Remove(socket);
                     SocketClose();
                 };
 
@@ -76,20 +79,24 @@ namespace DisSunChat.Common
         public void SendMessage(string socketData)
         {
             //string respondStr = "{\"ClientName\":\"172.16.2.4:00\",\"CreateTime\":\"2020-03-03 12:45:24\",\"ChatContent\":\"这里是内容\",\"PrevMsg\":\"" + requestMsg +"\"}";
-            string cAddress = connSocket.ConnectionInfo.ClientIpAddress;
-            string cPort = connSocket.ConnectionInfo.ClientPort.ToString();
-            string clientFrom = cAddress + ":" + cPort;
 
-            string resultData = "";
-            if (this.ResponseEvent != null)
+            foreach (var sk in allSockets)
             {
-                resultData = this.ResponseEvent(socketData, clientFrom);
-            }
+                string cAddress = sk.ConnectionInfo.ClientIpAddress;
+                string cPort = sk.ConnectionInfo.ClientPort.ToString();
+                string clientFrom = cAddress + ":" + cPort;
 
-            if (!string.IsNullOrWhiteSpace(resultData))
-            { 
-                connSocket.Send(resultData);
-            }                   
+                string resultData = "";
+                if (this.ResponseEvent != null)
+                {
+                    resultData = this.ResponseEvent(socketData, clientFrom);
+                }
+
+                if (!string.IsNullOrWhiteSpace(resultData))
+                {
+                    sk.Send(resultData);
+                }
+            }
         }
     }
 
