@@ -28,5 +28,5 @@ namespace DisSunChat.Common
 
     public delegate int SwitchHandle();
     public delegate int ListenHandle(string socketData,string clientFrom);
-    public delegate string ResponseHandle(string socketData, string clientFrom);
+    public delegate string ResponseHandle(string socketData,string cIp, string cPort,string cGuid);
 }

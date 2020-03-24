@@ -63,9 +63,7 @@ body {
 }
 
 .leftDialog .imgBox {
-    float: left;
-    background: url(../images/head/head03.png) no-repeat 32px 32px;
-    background-position: top;
+    float: left;   
 }
 
 .leftDialog .msgBox {
@@ -74,7 +72,7 @@ body {
 
 
 .leftDialog .msgRow {
-    background-color: #A1E85C;
+    background-color: #FFFFFF;
 }
 
 .rightDialog {
@@ -82,9 +80,7 @@ body {
 }
 
     .rightDialog .imgBox {
-        float: right;
-        background: url(../images/head/head08.png) no-repeat 32px 32px;
-        background-position: top;
+        float: right;      
         text-align: right;
     }
 
@@ -94,7 +90,7 @@ body {
     }
 
     .rightDialog .msgRow {
-        background-color: #FFFFFF;
+        background-color: #A1E85C;
     }
 
 
@@ -211,4 +207,50 @@ body {
     margin: 1px 3px 20px 3px;
     border-radius: 3px;
     border: solid 1px #C5C5C7;
+}
+
+.imgHead00 {
+    background: url(../images/head/head00.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead01 {
+    background: url(../images/head/head01.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead02 {
+    background: url(../images/head/head02.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead03 {
+    background: url(../images/head/head03.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead04 {
+    background: url(../images/head/head04.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead05 {
+    background: url(../images/head/head05.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead06 {
+    background: url(../images/head/head06.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead07 {
+    background: url(../images/head/head07.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead08 {
+    background: url(../images/head/head08.png) no-repeat 32px 32px;
+    background-position: top;
+}
+
+.imgHead09 {
+    background: url(../images/head/head09.png) no-repeat 32px 32px;
+    background-position: top;
+}
+.imgHead10 {
+    background: url(../images/head/head10.png) no-repeat 32px 32px;
+    background-position: top;
 }

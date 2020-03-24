@@ -1,5 +1,8 @@
 ﻿using Fleck;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,29 +17,54 @@ namespace DisSunChat.Common
         public event SwitchHandle WsCloseEvent;
         public event ListenHandle ListenEvent;
         public event ResponseHandle ResponseEvent;
-        private List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
-
-        private IWebSocketConnection connSocket;         
+        private Hashtable socketListHs = new Hashtable();
+      
         public void WebSocketInit()
         {
             string websocketPath = Utils.GetConfig("websocketPath");
             WebSocketServer wsServer = new WebSocketServer(websocketPath);
+            
+
             wsServer.Start(socket =>
             {
-                connSocket = socket;
-
-                socket.OnOpen = () => {
-                    allSockets.Add(socket);
+                socket.OnOpen = () => {                    
                     SocketOpen();
                 };
 
                 socket.OnClose = () => {
-                    allSockets.Remove(socket);
+
+                    for(int i= socketListHs.Count-1; i>=0;i--)
+                    {
+                        if (socketListHs[i] == null)
+                        {                           
+                            socketListHs.Remove(i);
+                        }                        
+                    }                 
                     SocketClose();
                 };
 
-                socket.OnMessage = (message) =>{
-                    ListenMessage(message);
+                socket.OnMessage = (message) =>
+                {
+                    JObject jo = (JObject)JsonConvert.DeserializeObject(message);
+                    string identityMd5 = jo["identityMd5"].ToString();
+                    string sMsg = jo["sMsg"].ToString();
+                    bool isOpenLink = Convert.ToBoolean(jo["isOpenLink"]);
+
+                    if (isOpenLink)
+                    {
+                        if (!socketListHs.ContainsKey(identityMd5))
+                        {
+                            socketListHs.Add(identityMd5, socket);
+                        }
+                        else
+                        {
+                            socketListHs[identityMd5] = socket;
+                        }
+                    }
+                    else
+                    {
+                        ListenMessage(message);
+                    }
                 };
 
             });
@@ -62,9 +90,13 @@ namespace DisSunChat.Common
 
         public void ListenMessage(string socketData)
         {
-          
-            string cAddress= connSocket.ConnectionInfo.ClientIpAddress;
-            string cPort= connSocket.ConnectionInfo.ClientPort.ToString();
+            JObject jo = (JObject)JsonConvert.DeserializeObject(socketData);
+            string identityMd5 = jo["identityMd5"].ToString();
+            string sMsg = jo["sMsg"].ToString();
+
+            IWebSocketConnection socketConn = (IWebSocketConnection)socketListHs[identityMd5];
+            string cAddress= socketConn.ConnectionInfo.ClientIpAddress;
+            string cPort= socketConn.ConnectionInfo.ClientPort.ToString();
             string clientFrom= cAddress + ":" + cPort;
 
             if (this.ListenEvent != null)
@@ -78,25 +110,31 @@ namespace DisSunChat.Common
 
         public void SendMessage(string socketData)
         {
-            //string respondStr = "{\"ClientName\":\"172.16.2.4:00\",\"CreateTime\":\"2020-03-03 12:45:24\",\"ChatContent\":\"这里是内容\",\"PrevMsg\":\"" + requestMsg +"\"}";
+            JObject jo = (JObject)JsonConvert.DeserializeObject(socketData);
+            string identityMd5 = jo["identityMd5"].ToString();
+            string sMsg = jo["sMsg"].ToString();
+            IWebSocketConnection socketConn = (IWebSocketConnection)socketListHs[identityMd5];
 
-            foreach (var sk in allSockets)
+            string cIp = socketConn.ConnectionInfo.ClientIpAddress;
+            string cPort = socketConn.ConnectionInfo.ClientPort.ToString();
+            string cGuid = socketConn.ConnectionInfo.Id.ToString("N");
+
+            string resultData = "";
+            if (this.ResponseEvent != null)
             {
-                string cAddress = sk.ConnectionInfo.ClientIpAddress;
-                string cPort = sk.ConnectionInfo.ClientPort.ToString();
-                string clientFrom = cAddress + ":" + cPort;
-
-                string resultData = "";
-                if (this.ResponseEvent != null)
-                {
-                    resultData = this.ResponseEvent(socketData, clientFrom);
-                }
-
-                if (!string.IsNullOrWhiteSpace(resultData))
-                {
-                    sk.Send(resultData);
-                }
+                resultData = this.ResponseEvent(socketData, cIp, cPort, cGuid);
             }
+
+            if (!string.IsNullOrWhiteSpace(resultData))
+            {
+                foreach (DictionaryEntry dey in socketListHs)
+                {
+                    IWebSocketConnection subConn = (IWebSocketConnection)dey.Value;
+                    subConn.Send(resultData);
+                }          
+            }
+
+
         }
     }
 

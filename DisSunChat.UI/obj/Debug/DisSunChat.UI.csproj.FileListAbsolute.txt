@@ -94,3 +94,5 @@ E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\log4net.xml
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.dll
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.pdb
 E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\DisSunChat.Services.dll.config
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\Newtonsoft.Json.dll
+E:\CodePlay\Dissun聊天室项目\DisSunChat\DisSunChat.UI\bin\Newtonsoft.Json.xml

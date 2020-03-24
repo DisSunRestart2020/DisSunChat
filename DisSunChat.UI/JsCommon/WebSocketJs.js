@@ -1,11 +1,11 @@
 ﻿var socket;
-var websocketInit = function () {
+var websocketInit = function (wsPath) {
     if (typeof (WebSocket) === "undefined") {
         socket = null;
-        alert("您的浏览器不支持本功能");
+        console.log("浏览器不支持websocket");
     } else {
         // 实例化socket
-        socket = new WebSocket("ws://172.16.2.4:8181");
+        socket = new WebSocket(wsPath);
         // 监听socket连接
         socket.onopen = wsOpen;
         //监听socket关闭
@@ -17,8 +17,11 @@ var websocketInit = function () {
     }
 }
 
+
 var wsOpen = function () {
     console.log("已经成功连接");
+    var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"\",\"imgIndex\":\"" + imgIndex + "\",\"isOpenLink\":\"true\"}";
+    socket.send(sendMsg);
 }
 
 var wsClose = function () {

@@ -22,24 +22,24 @@ namespace DisSunChat
             IWebSocketHelper helper = new FleckHelper();
 
             helper.WsOpenEvent += () => {
-                Utils.SaveLog("WebSocket已经开启");
+                //Utils.SaveLog("WebSocket已经开启");
                 return 1;
             };
 
             helper.WsCloseEvent += () => {
-                Utils.SaveLog("WebSocket已经关闭");
+                //Utils.SaveLog("WebSocket已经关闭");
                 return 1;
             };
 
-            helper.ListenEvent += (d, c) =>
+            helper.ListenEvent += (socketData, clientFrom) =>
             {
-                chatService.CreateChatInfo(c, d);
+                chatService.CreateChatInfo(clientFrom, socketData);
                 return 1;
             };
 
-            helper.ResponseEvent += (d, c) => {
+            helper.ResponseEvent += (socketData,cIp, cPort, cGuid) => {
                 string timeStr = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string jsonStr = "{\"ClientName\":\"" + c + "\",\"ChatTime\":\"" + timeStr + "\",\"ChatMsg\":\"" + d + "\"}";
+                string jsonStr = "{\"cIp\":\"" + cIp + "\",\"cPort\":\"" + cPort + "\",\"cGuid\":\"" + cGuid + "\",\"ChatTime\":\"" + timeStr + "\",\"ChatMsgJson\":" + socketData + "}";
                 return jsonStr;
             };
 
