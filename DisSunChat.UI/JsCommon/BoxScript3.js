@@ -42,7 +42,7 @@ var SendMsgEvent = function () {
 
 var leftHtml = '<div class="dialogBox leftDialog "><div class="imgBox $clientHead$"></div><div class="msgBox"><div class="timeRow">IP=$clientName$</div><div class="msgRow">$chatContent$</div></div><div class="clear"></div></div>';
 var rightHtml = '<div class="dialogBox rightDialog"><div class="imgBox $clientHead$"></div><div class="msgBox"><div class="timeRow">IP=$clientName$</div><div class="msgRow">$chatContent$</div></div><div class="clear"></div></div>';
-
+var centerHtml = '<div class="dialogBox centerDialog"><div class="timeRow">$infoTime$</div><div class="alertInfo">-- $chatContent$ --</div><div class="clear"></div></div>';
 
 var wsMessage = function (msg) {
     var responseStr = msg.data;
@@ -62,21 +62,26 @@ var wsMessage = function (msg) {
     var responseIdentity = chatMsgJson.identityMd5;
     var responseMsg = chatMsgJson.sMsg;
     var responseImgIndex = chatMsgJson.imgIndex;
+    var responseIsOpenLink = chatMsgJson.isOpenLink;
 
-    var imgHeadStr = "imgHead0" + responseImgIndex;    
 
-    var contentHtml;
-    if (responseIdentity === identityMd5) {
-        contentHtml = rightHtml;
-        imgHeadStr = "imgHead10";
+    if (responseIsOpenLink === "true") {
+        //登录信息
+        var contentHtml = centerHtml;
+        var subHtml = contentHtml.replace("$infoTime$", chatTime).replace("$chatContent$", responseMsg);
+        $(".contentDiv .dialogGap").before(subHtml);
     }
     else {
-        contentHtml = leftHtml;
-    } 
-   
-
-    var subHtml = contentHtml.replace("$clientName$", clientName + "(" + chatTime + ")").replace("$chatContent$", responseMsg).replace("$clientHead$", imgHeadStr);
-
-    $(".contentDiv .dialogGap").before(subHtml);
-    
+        var imgHeadStr = "imgHead0" + responseImgIndex;
+        var contentHtml;
+        if (responseIdentity === identityMd5) {
+            contentHtml = rightHtml;
+            imgHeadStr = "imgHead10";
+        }
+        else {
+            contentHtml = leftHtml;
+        }
+        var subHtml = contentHtml.replace("$clientName$", clientName + "(" + chatTime + ")").replace("$chatContent$", responseMsg).replace("$clientHead$", imgHeadStr);
+        $(".contentDiv .dialogGap").before(subHtml);
+    }
 }

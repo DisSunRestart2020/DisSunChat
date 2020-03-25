@@ -61,10 +61,7 @@ namespace DisSunChat.Common
                             socketListHs[identityMd5] = socket;
                         }
                     }
-                    else
-                    {
-                        ListenMessage(message);
-                    }
+                    ListenMessage(message);
                 };
 
             });
@@ -93,19 +90,31 @@ namespace DisSunChat.Common
             JObject jo = (JObject)JsonConvert.DeserializeObject(socketData);
             string identityMd5 = jo["identityMd5"].ToString();
             string sMsg = jo["sMsg"].ToString();
+            bool isOpenLink = Convert.ToBoolean(jo["isOpenLink"]);
 
             IWebSocketConnection socketConn = (IWebSocketConnection)socketListHs[identityMd5];
             string cAddress= socketConn.ConnectionInfo.ClientIpAddress;
             string cPort= socketConn.ConnectionInfo.ClientPort.ToString();
             string clientFrom= cAddress + ":" + cPort;
 
-            if (this.ListenEvent != null)
+            if (isOpenLink)
             {
-                this.ListenEvent(socketData, clientFrom);
+                string newsMsg = clientFrom+"加入了群聊";
+                string searchStr = "\"sMsg\":\"";
+                int position = socketData.IndexOf(searchStr);
+                socketData = socketData.Insert(position + searchStr.Length, newsMsg);
+                //立刻反馈
+                SendMessage(socketData);
             }
-
-            //立刻反馈
-            SendMessage(socketData);
+            else
+            {
+                if (this.ListenEvent != null)
+                {
+                    this.ListenEvent(socketData, clientFrom);
+                }
+                //立刻反馈
+                SendMessage(socketData);
+            }
         }
 
         public void SendMessage(string socketData)

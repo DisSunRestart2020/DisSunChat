@@ -22,7 +22,7 @@ body {
 
 .dialogBox {
     /*border: double 1px blue;*/
-    margin: 5px 0 5px 0;
+    margin: 8px 0 7px 0;
     display: block;
 }
 
@@ -249,3 +249,14 @@ body {
     background: url(../images/head/head10.png) no-repeat 32px 32px;
     background-position: top;
 }
+
+
+
+.centerDialog {
+    text-align:center;
+}
+
+    .centerDialog .alertInfo {
+        font-size: 10px;
+        color: #999999;
+    }
