@@ -27,6 +27,12 @@ var CloseEvent = function () {
 
 var SendMsgEvent = function () { 
     var sMsg = $("#contentTxt").val().trim();
+
+    if (sMsg.length >= 80) {
+        alert("有话慢慢说，不要一次性说一篇文章！");
+        return true;
+    }
+
     if (sMsg != null && sMsg != "") {
         var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"" + sMsg + "\",\"imgIndex\":\"" + imgIndex + "\",\"isOpenLink\":\"false\"}";
         wsSend(sendMsg);

@@ -37,25 +37,20 @@ body {
 }
 
 .dialogBox .msgRow {
-    /*border: solid 1px yellow;*/
     border-radius: 7px;
     padding: 8px 5px 8px 5px;
 }
 
 .dialogBox .imgBox {
     width: 35px;
-    /*border: solid 1px red;*/
-    display: inline-block;
-    vertical-align: top;
+
     height: 50px;
     margin-top: 5px;
 }
 
 .dialogBox .msgBox {
-    width: 50%;
-    /*border: solid 1px green;*/
-    display: inline-block;
-    vertical-align: top;
+   max-width:70%;
+   min-width:30%;
 }
 
 .clear {
