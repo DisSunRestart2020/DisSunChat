@@ -20,7 +20,6 @@ namespace DisSunChat
             ChatService chatService = new ChatService();
 
             IWebSocketHelper helper = new FleckHelper();
-
             helper.WsOpenEvent += () => {
                 //Utils.SaveLog("WebSocket已经开启");
                 return 1;

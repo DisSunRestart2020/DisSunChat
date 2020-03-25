@@ -34,7 +34,7 @@ var SendMsgEvent = function () {
     }
 
     if (sMsg != null && sMsg != "") {
-        var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"" + sMsg + "\",\"imgIndex\":\"" + imgIndex + "\",\"isOpenLink\":\"false\"}";
+        var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"" + sMsg + "\",\"imgIndex\":\"" + imgIndex + "\",\"isConnSign\":\"false\"}";
         wsSend(sendMsg);
     }
     $("#contentTxt").val("");   
@@ -62,10 +62,10 @@ var wsMessage = function (msg) {
     var responseIdentity = chatMsgJson.identityMd5;
     var responseMsg = chatMsgJson.sMsg;
     var responseImgIndex = chatMsgJson.imgIndex;
-    var responseIsOpenLink = chatMsgJson.isOpenLink;
+    var responseIsConnSign = chatMsgJson.isConnSign;
 
 
-    if (responseIsOpenLink === "true") {
+    if (responseIsConnSign === "true") {
         //登录信息
         var contentHtml = centerHtml;
         var subHtml = contentHtml.replace("$infoTime$", chatTime).replace("$chatContent$", responseMsg);

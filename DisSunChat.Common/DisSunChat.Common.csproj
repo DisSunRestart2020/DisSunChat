@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientData.cs" />
+    <Compile Include="WebSocketMessage.cs" />
     <Compile Include="FleckHelper.cs" />
     <Compile Include="IWebSocketHelper.cs" />
     <Compile Include="LoggerFactory.cs" />
