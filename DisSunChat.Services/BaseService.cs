@@ -23,7 +23,7 @@ namespace DisSunChat.Services
         public IQueryable<T> LoadEntities<T>(Expression<Func<T, bool>> whereLambda) where T : class, new()
         {
             return dao.LoadEntities(whereLambda);
-        }
+        }       
 
         public T SaveEntity<T>(T entity) where T : class, new()
         {

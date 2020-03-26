@@ -48,14 +48,31 @@
         <div class="clear"></div>
     </div>
 
+
     <div class="dialogBox centerDialog">
         <div class="timeRow">2020-03-20 11:00:17</div>
         <div class="alertInfo">-- 19.3.44.24:111加入了群聊 --</div>
         <div class="clear"></div>
     </div>
     -->
-
         
+        
+        @* 
+            
+            @foreach (var item in Model)
+        {
+            <div class="dialogBox rightDialog">
+                <div class="imgBox imgHead10"></div>
+                <div class="msgBox">
+                    <div class="timeRow">IP=@item.ClientName (@item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss"))</div>
+                    <div class="msgRow">@item.ChatContent</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        }
+            *@
+
+
 
 
         <div class="dialogBox dialogGap"></div>

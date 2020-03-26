@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatHistoryView.cs" />
     <Compile Include="ClientData.cs" />
     <Compile Include="WebSocketMessage.cs" />
     <Compile Include="FleckHelper.cs" />

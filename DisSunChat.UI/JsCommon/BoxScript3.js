@@ -7,8 +7,9 @@ $(function () {
     txtUserAgent = GetUserAgent();
     imgIndex = txtResolution.substr(txtResolution.length - 1, 1);
     identityMd5 = hex_md5(txtGpu + txtResolution + txtmodels + txtUserAgent);//用手机自身的信息来产生唯一识别码，但是这个方法存在重复的可能，目前将就使用。
-
-    websocketInit("ws://172.16.2.4:8181");    
+    
+    websocketInit("ws://172.16.2.4:8181");   
+    getDataList();
 });
 
 
@@ -84,4 +85,45 @@ var wsMessage = function (msg) {
         var subHtml = contentHtml.replace("$clientName$", clientName + "(" + chatTime + ")").replace("$chatContent$", responseMsg).replace("$clientHead$", imgHeadStr);
         $(".contentDiv .dialogGap").before(subHtml);
     }
+}
+
+
+var pageIndex = 0;
+var pageSize =10;
+var getDataList = function () {
+    //GetDataList
+
+    $.ajax({
+        type: "get",
+        url: "/Chat/GetDataList?pageIndex=" + pageIndex + "&pageSize=" + pageSize,
+        dataType: "json",
+        data: {},
+        contentType: 'application/json;charset=utf-8',//向后台传送格式
+        success: function (data) {
+           // console.log("返回数据" + JSON.stringify( data));
+            var printHtml = '';
+            for (var i = 0; i < data.length; i++) {
+                printHtml += printSubDataHtml(data[i]);
+            }
+            $(".contentDiv .dialogGap").before(printHtml);
+        },
+        error: function (e) {
+            var res = (e.responseText);
+            console.log("发生错误：" + res);
+        }
+    });
+}
+
+var printSubDataHtml = function (item) {
+    var imgHeadStr = "imgHead0" + item.ImgIndex;
+    var contentHtml;
+    if (item.IdentityMd5 === identityMd5) {
+        contentHtml = rightHtml;
+        imgHeadStr = "imgHead10";
+    }
+    else {
+        contentHtml = leftHtml;
+    }
+    var subHtml = contentHtml.replace("$clientName$", item.ClientName + "(" + item.CreateTime + ")").replace("$chatContent$", item.ChatContent).replace("$clientHead$", imgHeadStr);
+    return subHtml;
 }

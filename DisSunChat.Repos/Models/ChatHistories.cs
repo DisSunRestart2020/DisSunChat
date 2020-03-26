@@ -42,5 +42,21 @@ namespace DisSunChat.Repos.Models
             set;
 
         }
+
+        [Display(Name = "本地唯一识别码")]
+        [StringLength(50, ErrorMessage = "长度不可超过50")]
+        public string IdentityMd5
+        {
+            get;
+            set;
+        }
+
+        [Display(Name = "头像编号")]
+        [StringLength(20, ErrorMessage = "长度不可超过20")]
+        public string ImgIndex
+        {
+            get;
+            set;
+        }
     }
 }

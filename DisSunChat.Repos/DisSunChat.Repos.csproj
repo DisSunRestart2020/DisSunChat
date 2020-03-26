@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202003180901387_FirstCreate.designer.cs">
       <DependentUpon>202003180901387_FirstCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003260726043_ExtendDBToIdentityMd5.cs" />
+    <Compile Include="Migrations\202003260726043_ExtendDBToIdentityMd5.designer.cs">
+      <DependentUpon>202003260726043_ExtendDBToIdentityMd5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChatHistories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003180901387_FirstCreate.resx">
       <DependentUpon>202003180901387_FirstCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260726043_ExtendDBToIdentityMd5.resx">
+      <DependentUpon>202003260726043_ExtendDBToIdentityMd5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

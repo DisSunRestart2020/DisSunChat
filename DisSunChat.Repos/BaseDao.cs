@@ -16,7 +16,7 @@ namespace DisSunChat.Repos
         public IQueryable<T> LoadEntities<T>(Expression<Func<T, bool>> whereLambda) where T : class, new()
         {
             return db.Set<T>().Where<T>(whereLambda);
-        }
+        }                
 
         public T SaveEntity<T>(T entity) where T : class, new()
         {
