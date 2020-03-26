@@ -11,13 +11,20 @@ namespace DisSunChat.Common
     /// <summary>
     /// Fleck 帮助类，实现webSocket的调用
     /// </summary>
-    public  class FleckHelper:IWebSocketHelper
+    public class FleckHelper:IWebSocketHelper
     {
         public event SwitchHandle WsOpenEvent;
         public event SwitchHandle WsCloseEvent;
         public event ListenHandle ListenEvent;
-        public event ResponseHandle ResponseEvent;
-
+        public event ResponseTextHandle ResponseTextEvent;
+        /// <summary>
+        /// 聊天室在线人数
+        /// </summary>
+        public int PlayerCount
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// websocket已经连通的连接集合
         /// </summary>
@@ -31,8 +38,7 @@ namespace DisSunChat.Common
 
             wsServer.Start(socket =>
             {         
-                socket.OnOpen = () => {
-                    Utils.SaveLog("成功建立长连接！"+socket.ConnectionInfo.Id.ToString("N"));
+                socket.OnOpen = () => {                    
                     //自定义处理
                     if (this.WsOpenEvent != null)
                     {
@@ -40,9 +46,7 @@ namespace DisSunChat.Common
                     }
                 };
 
-                socket.OnClose = () => {
-                    Utils.SaveLog("断开一个长连接");
-
+                socket.OnClose = () => {        
                     //从连接集合中移除
                     for (int i= socketListHs.Count-1; i>=0;i--)
                     {
@@ -51,7 +55,7 @@ namespace DisSunChat.Common
                             socketListHs.Remove(i);
                         }                        
                     }
-
+                    PlayerCount = socketListHs.Count;
                     //自定义处理
                     if (this.WsCloseEvent != null)
                     {
@@ -61,76 +65,42 @@ namespace DisSunChat.Common
 
                 socket.OnMessage = (message) =>
                 {
-                    JObject jo = (JObject)JsonConvert.DeserializeObject(message);
-                    string identityMd5 = jo["identityMd5"].ToString();
-                    string sMsg = jo["sMsg"].ToString();
-                    bool isConnSign = Convert.ToBoolean(jo["isConnSign"]);
 
-                    if (isConnSign)
+                    ClientData cData = Utils.JsonToObject<ClientData>(message);
+                    WebSocketMessage wsocketMsg = new WebSocketMessage(socket.ConnectionInfo.ClientIpAddress, socket.ConnectionInfo.ClientPort.ToString(), socket.ConnectionInfo.Id.ToString("N"), cData);
+
+                    if (Convert.ToBoolean(cData.IsConnSign))
                     {
-                        if (!socketListHs.ContainsKey(identityMd5))
+                        if (!socketListHs.ContainsKey(cData.IdentityMd5))
                         {
-                            socketListHs.Add(identityMd5, socket);
+                            socketListHs.Add(cData.IdentityMd5, socket);
                         }
                         else
                         {
-                            socketListHs[identityMd5] = socket;
+                            socketListHs[cData.IdentityMd5] = socket;
                         }
+                        PlayerCount = socketListHs.Count;
                     }
-                    ListenMessage(message);
+
+                    if (this.ListenEvent != null)
+                    {
+                        this.ListenEvent(wsocketMsg);
+                    }
                 };
 
             });
-        }
+        }   
 
-
-        public void ListenMessage(string socketData)
-        {
-            JObject jo = (JObject)JsonConvert.DeserializeObject(socketData);
-            string identityMd5 = jo["identityMd5"].ToString();
-            string sMsg = jo["sMsg"].ToString();
-            bool isConnSign = Convert.ToBoolean(jo["isConnSign"]);
-
-            IWebSocketConnection socketConn = (IWebSocketConnection)socketListHs[identityMd5];
-            string cAddress= socketConn.ConnectionInfo.ClientIpAddress;
-            string cPort= socketConn.ConnectionInfo.ClientPort.ToString();
-            string clientFrom= cAddress + ":" + cPort;
-
-            if (isConnSign)
-            {
-                string newsMsg = clientFrom+"加入了群聊(共"+ socketListHs.Count + "人在线)";
-                string searchStr = "\"sMsg\":\"";
-                int position = socketData.IndexOf(searchStr);
-                socketData = socketData.Insert(position + searchStr.Length, newsMsg);
-                //立刻反馈
-                SendMessage(socketData);
-            }
-            else
-            {
-                if (this.ListenEvent != null)
-                {
-                    this.ListenEvent(socketData, clientFrom);
-                }
-                //立刻反馈
-                SendMessage(socketData);
-            }
-        }
-
-        public void SendMessage(string socketData)
-        {
-            JObject jo = (JObject)JsonConvert.DeserializeObject(socketData);
-            string identityMd5 = jo["identityMd5"].ToString();
-            string sMsg = jo["sMsg"].ToString();
-            IWebSocketConnection socketConn = (IWebSocketConnection)socketListHs[identityMd5];
-
-            string cIp = socketConn.ConnectionInfo.ClientIpAddress;
-            string cPort = socketConn.ConnectionInfo.ClientPort.ToString();
-            string cGuid = socketConn.ConnectionInfo.Id.ToString("N");
-
+        /// <summary>
+        /// 向全员发送信息
+        /// </summary>
+        /// <param name="wsocketMsg"></param>
+        public void SendMessageToAll(WebSocketMessage wsocketMsg)
+        {           
             string resultData = "";
-            if (this.ResponseEvent != null)
+            if (this.ResponseTextEvent != null)
             {
-                resultData = this.ResponseEvent(socketData, cIp, cPort, cGuid);
+                resultData = this.ResponseTextEvent(wsocketMsg);
             }
 
             if (!string.IsNullOrWhiteSpace(resultData))
@@ -141,8 +111,32 @@ namespace DisSunChat.Common
                     subConn.Send(resultData);
                 }          
             }
+        }
 
+        /// <summary>
+        /// 向自己发送信息
+        /// </summary>
+        /// <param name="wsocketMsg"></param>
+        public void SendMessageToMe(WebSocketMessage wsocketMsg)
+        {
+            string resultData = "";
+            if (this.ResponseTextEvent != null)
+            {
+                resultData = this.ResponseTextEvent(wsocketMsg);
+            }
 
+            if (!string.IsNullOrWhiteSpace(resultData))
+            {
+                foreach (DictionaryEntry dey in socketListHs)
+                {
+                    IWebSocketConnection subConn = (IWebSocketConnection)dey.Value;
+                    if(subConn.ConnectionInfo.Id.ToString("N")== wsocketMsg.CGuidID)
+                    {
+                        subConn.Send(resultData);
+                        break;
+                    }                    
+                }
+            }
         }
     }
 

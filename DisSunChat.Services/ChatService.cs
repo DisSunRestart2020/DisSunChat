@@ -1,4 +1,5 @@
-﻿using DisSunChat.Repos.Models;
+﻿using DisSunChat.Common;
+using DisSunChat.Repos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace DisSunChat.Services
 {
     public class ChatService:BaseService
     {
-        public int CreateChatInfo( string clientName,string chatContent)
+        public int CreateChatInfo(WebSocketMessage wsocketMsg)
         {
             ChatHistories history = new ChatHistories();
-            history.ChatContent = chatContent;
-            history.ClientName = clientName;
-            history.CreateTime = DateTime.Now;
+            history.ChatContent = wsocketMsg.ClientData.SMsg;
+            history.ClientName = wsocketMsg.CIp+":"+ wsocketMsg.CPort;
+            history.CreateTime = Convert.ToDateTime(wsocketMsg.ChatTime);
 
             SaveEntity(history);
             return 1;

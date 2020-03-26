@@ -25,14 +25,31 @@ namespace DisSunChat.Common
         /// <summary>
         /// websocket响应处理事件
         /// </summary>
-        event ResponseHandle ResponseEvent;
+        event ResponseTextHandle ResponseTextEvent;
+        /// <summary>
+        /// 聊天室在线人数
+        /// </summary>
+        int PlayerCount
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// websocket初始化
         /// </summary>
         void WebSocketInit();
-        
-        
+
+        /// <summary>
+        /// 向全员发送信息
+        /// </summary>
+        /// <param name="wsocketMsg"></param>
+        void SendMessageToAll(WebSocketMessage wsocketMsg);
+        /// <summary>
+        /// 向自己发送信息
+        /// </summary>
+        /// <param name="wsocketMsg"></param>
+        void SendMessageToMe(WebSocketMessage wsocketMsg);
     }
 
 
@@ -47,7 +64,7 @@ namespace DisSunChat.Common
     /// <param name="socketData"></param>
     /// <param name="clientFrom"></param>
     /// <returns></returns>
-    public delegate int ListenHandle(string socketData,string clientFrom);
+    public delegate int ListenHandle(WebSocketMessage wsocketMsg);
     /// <summary>
     /// 响应文本处理委托
     /// </summary>
@@ -56,5 +73,5 @@ namespace DisSunChat.Common
     /// <param name="cPort"></param>
     /// <param name="cGuid"></param>
     /// <returns></returns>
-    public delegate string ResponseHandle(string socketData,string cIp, string cPort,string cGuid);
+    public delegate string ResponseTextHandle(WebSocketMessage wsocketMsg);
 }

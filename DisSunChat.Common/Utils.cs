@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,6 +22,18 @@ namespace DisSunChat.Common
             {
                 return "";
             }
+        }
+
+        public static T JsonToObject<T>(string jsonString)
+        {            
+            T t = JsonConvert.DeserializeObject<T>(jsonString);
+            return t;
+        }
+
+        public static string ObjectToJsonStr(object obj)
+        {
+            string s = JsonConvert.SerializeObject(obj);
+            return s;        
         }
     }
 }

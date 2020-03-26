@@ -1,6 +1,7 @@
 ﻿
 using DisSunChat.Common;
 using DisSunChat.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,15 +31,26 @@ namespace DisSunChat
                 return 1;
             };
 
-            helper.ListenEvent += (socketData, clientFrom) =>
+            helper.ListenEvent += (wsocketMsg) =>
             {
-                chatService.CreateChatInfo(clientFrom, socketData);
+                if (!Convert.ToBoolean(wsocketMsg.ClientData.IsConnSign))
+                {
+                    chatService.CreateChatInfo(wsocketMsg);
+                }
+                else
+                {
+                    string clientName = wsocketMsg.CIp + ":" + wsocketMsg.CPort;
+                    string traceInfo = string.Format("{0} 加入聊天室(共{1}人在线)", clientName, helper.PlayerCount);
+                    wsocketMsg.ClientData.SMsg = traceInfo;
+
+                }
+                //立刻反馈
+                helper.SendMessageToAll(wsocketMsg);
                 return 1;
             };
 
-            helper.ResponseEvent += (socketData,cIp, cPort, cGuid) => {
-                string timeStr = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string jsonStr = "{\"cIp\":\"" + cIp + "\",\"cPort\":\"" + cPort + "\",\"cGuid\":\"" + cGuid + "\",\"ChatTime\":\"" + timeStr + "\",\"ChatMsgJson\":" + socketData + "}";
+            helper.ResponseTextEvent += (wsocketMsg) => {                 
+                string jsonStr = Utils.ObjectToJsonStr(wsocketMsg);
                 return jsonStr;
             };
 

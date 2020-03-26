@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DisSunChat.Common\DisSunChat.Common.csproj">
+      <Project>{ad905a4e-9c28-4c0b-9763-209cc4a3a2a1}</Project>
+      <Name>DisSunChat.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DisSunChat.Repos\DisSunChat.Repos.csproj">
       <Project>{025d1289-62f3-4bdd-82a2-ace416258805}</Project>
       <Name>DisSunChat.Repos</Name>

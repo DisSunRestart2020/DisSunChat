@@ -16,7 +16,7 @@ namespace DisSunChat.Controllers
         public ActionResult Index()
         {
 
-            chatServier.CreateChatInfo("客户端" + DateTime.Now.Ticks, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            //chatServier.CreateChatInfo("客户端" + DateTime.Now.Ticks, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
 
 
             return View();

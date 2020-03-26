@@ -20,7 +20,9 @@ var websocketInit = function (wsPath) {
 
 var wsOpen = function () {
     console.log("已经成功连接");
-    var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"\",\"imgIndex\":\"" + imgIndex + "\",\"isConnSign\":\"true\"}";
+    var sMsg = "";
+
+    var sendMsg = "{\"IdentityMd5\":\"" + identityMd5 + "\",\"SMsg\":\"\",\"ImgIndex\":\"" + imgIndex + "\",\"IsConnSign\":\"true\"}";
     socket.send(sendMsg);
 }
 

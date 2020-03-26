@@ -34,7 +34,7 @@ var SendMsgEvent = function () {
     }
 
     if (sMsg != null && sMsg != "") {
-        var sendMsg = "{\"identityMd5\":\"" + identityMd5 + "\",\"sMsg\":\"" + sMsg + "\",\"imgIndex\":\"" + imgIndex + "\",\"isConnSign\":\"false\"}";
+        var sendMsg = "{\"IdentityMd5\":\"" + identityMd5 + "\",\"SMsg\":\"" + sMsg + "\",\"ImgIndex\":\"" + imgIndex + "\",\"IsConnSign\":\"false\"}";
         wsSend(sendMsg);
     }
     $("#contentTxt").val("");   
@@ -51,18 +51,18 @@ var wsMessage = function (msg) {
     var responseJson = $.parseJSON(responseStr); 
     if (responseJson == null) return false;
     
-    var cIp = responseJson.cIp;
-    var cPort = responseJson.cPort;
-    var cGuid = responseJson.cGuid;    
+    var cIp = responseJson.CIp;
+    var cPort = responseJson.CPort;
+    var cGuid = responseJson.CGuidID;    
     var chatTime = responseJson.ChatTime;  
     var clientName = cIp + ":" + cPort;     
 
-    var chatMsgJson = responseJson.ChatMsgJson;
+    var clientDataJson = responseJson.ClientData;
 
-    var responseIdentity = chatMsgJson.identityMd5;
-    var responseMsg = chatMsgJson.sMsg;
-    var responseImgIndex = chatMsgJson.imgIndex;
-    var responseIsConnSign = chatMsgJson.isConnSign;
+    var responseIdentity = clientDataJson.IdentityMd5;
+    var responseMsg = clientDataJson.SMsg;
+    var responseImgIndex = clientDataJson.ImgIndex;
+    var responseIsConnSign = clientDataJson.IsConnSign;
 
 
     if (responseIsConnSign === "true") {
