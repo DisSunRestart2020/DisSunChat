@@ -16,7 +16,7 @@ namespace DisSunChat
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Chat", action = "DiyLayout", id = UrlParameter.Optional }
+                defaults: new { controller = "Chat", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

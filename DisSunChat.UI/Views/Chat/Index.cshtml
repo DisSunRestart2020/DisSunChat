@@ -3,28 +3,92 @@
     ViewBag.Title = "公共聊天室";
 }
 
-    <script src="~/JsCommon/BoxScript.js"></script>
-    <link rel="stylesheet" href="~/StyleCommon/BoxCss.css" type="text/css" />
+<link rel="stylesheet" href="~/StyleCommon/ChatIndex.css?v=9" type="text/css" />
+<script src="~/JsCommon/PhoneHelper.js?v=9"></script>
+<script src="~/JsCommon/EncryptMD5.js?v=9"></script>
+<script src="~/JsCommon/WebSocketJs.js?v=9"></script>
+<script src="~/JsCommon/ChatIndex.js?v=9"></script>
+<div class="mainDiv">
+    <div class="praiseDiv" style="display:none">
+        <div class="praiseBackground"></div>
+        <div class="praiseContent">
+            <p>任何一个Demo都来之不易</p>
+            <p>何况是用心制作</p>
+            <p>如果觉得Demo对您有所帮助或者提升</p>
+            <p>可以请Ta喝一杯咖啡</p>
+            <p>让Ta在闲暇之时更有动力坚持下去...</p>
+            <div>
+                <img src="~/images/payfor.jpg" class="praisePayImg" />
+            </div>
+            <div>
+                <input type="button" value="残忍拒绝" class="btnClose" onclick="CloseEvent()" />
+            </div>
+        </div>
+    </div>
+    <div class="contentDiv" id="wsContentDiv">
 
-<div class="triangle">
-    <ul>
-        <li class="textLeft">
-            <span>马天宇小哥哥在吗~</span>
-        </li>
-        <li class="textRight">
-            <span>在的呢！</span>
-        </li>
-        <li class="textLeft">
-            <span>在干嘛</span>
-        </li>
-        <li class="textRight">
-            <span>顶你个肺</span>
-        </li>
-        <li class="textLeft">
-            <span>(⊙o⊙)…</span>
-        </li>
-        <li class="textRight">
-            <span>悲剧</span>
-        </li>
-    </ul>
+        <!-- 消息模板 -->
+        <!--
+    <div class="dialogBox leftDialog">
+        <div class="imgBox imgHead10"></div>
+        <div class="msgBox">
+            <div class="timeRow">IP=201.2.54.11:3438 (2020.03.20 10:39:17)</div>
+            <div class="msgRow">今明两天多云转晴，记得穿棉袄出门！</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="dialogBox rightDialog">
+        <div class="imgBox imgHead10"></div>
+        <div class="msgBox">
+            <div class="timeRow">IP=19.3.44.24:111 (2020.03.20 11:00:17)</div>
+            <div class="msgRow">好的，披着棉被出来了！</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="dialogBox centerDialog">
+        <div class="timeRow">2020-03-20 11:00:17</div>
+        <div class="alertInfo">-- 19.3.44.24:111加入了群聊 --</div>
+        <div class="clear"></div>
+    </div>
+    -->
+        
+        
+        @* 
+            
+            @foreach (var item in Model)
+        {
+            <div class="dialogBox rightDialog">
+                <div class="imgBox imgHead10"></div>
+                <div class="msgBox">
+                    <div class="timeRow">IP=@item.ClientName (@item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss"))</div>
+                    <div class="msgRow">@item.ChatContent</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        }
+            *@
+
+
+
+
+        <div class="dialogBox dialogGap"></div>
+    </div>
+    <div class="keyboardDiv ">
+        <div class="leftDiv"><a href="javascript:void(0)" onclick="PraiseEvent()"><img src="~/images/praise.jpg" class="praiseImg" /></a></div>
+        <div class="centerDiv"><textarea class="chatContentTxt" id="contentTxt"></textarea></div>
+        <div class="rightDiv"><input type="button" value="发 送" class="submitBtn" onclick="SendMsgEvent()" /></div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+

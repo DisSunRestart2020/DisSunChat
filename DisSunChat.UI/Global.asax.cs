@@ -19,42 +19,55 @@ namespace DisSunChat
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ChatService chatService = new ChatService();
-
-            IWebSocketHelper helper = new FleckHelper();
-            helper.WsOpenEvent += () => {
-                //Utils.SaveLog("WebSocket已经开启");
-                return 1;
-            };
-
-            helper.WsCloseEvent += () => {
-                //Utils.SaveLog("WebSocket已经关闭");
-                return 1;
-            };
-
-            helper.ListenEvent += (wsocketMsg) =>
+            //Utils.SaveLog("程序圆形");
+            try
             {
-                if (!Convert.ToBoolean(wsocketMsg.ClientData.IsConnSign))
-                {
-                    chatService.CreateChatInfo(wsocketMsg);
-                }
-                else
-                {
-                    string clientName = wsocketMsg.CIp + ":" + wsocketMsg.CPort;
-                    string traceInfo = string.Format("{0} 加入聊天室(共{1}人在线)", clientName, helper.PlayerCount);
-                    wsocketMsg.ClientData.SMsg = traceInfo;
 
-                }
+                IWebSocketHelper helper = new FleckHelper();
+                helper.WsOpenEvent += () =>
+                {
+                    Utils.SaveLog("WebSocket已经开启");
+                    return 1;
+                };
+
+                helper.WsCloseEvent += () =>
+                {
+                    Utils.SaveLog("WebSocket已经关闭");
+                    return 1;
+                };
+
+                helper.ListenEvent += (wsocketMsg) =>
+                {
+                    Utils.SaveLog("WebSocket监听到了消息");
+                    if (!Convert.ToBoolean(wsocketMsg.ClientData.IsConnSign))
+                    {
+                        chatService.CreateChatInfo(wsocketMsg);
+                    }
+                    else
+                    {
+                        string clientName = wsocketMsg.CIp + ":" + wsocketMsg.CPort;
+                        string traceInfo = string.Format("{0} 加入聊天室(共{1}人在线)", clientName, helper.PlayerCount);
+                        wsocketMsg.ClientData.SMsg = traceInfo;
+
+                    }
                 //立刻反馈
                 helper.SendMessageToAll(wsocketMsg);
-                return 1;
-            };
+                    return 1;
+                };
 
-            helper.ResponseTextEvent += (wsocketMsg) => {                 
-                string jsonStr = Utils.ObjectToJsonStr(wsocketMsg);
-                return jsonStr;
-            };
+                helper.ResponseTextEvent += (wsocketMsg) =>
+                {
+                    string jsonStr = Utils.ObjectToJsonStr(wsocketMsg);
+                    return jsonStr;
+                };
 
-            helper.WebSocketInit();
+                helper.WebSocketInit();
+
+            }
+            catch(Exception ex)
+            {
+                Utils.SaveLog("发现了错误：" + ex.Message);
+            }
         }
     }
 }

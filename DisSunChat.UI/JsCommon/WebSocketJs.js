@@ -7,18 +7,18 @@ var websocketInit = function (wsPath) {
         // 实例化socket
         socket = new WebSocket(wsPath);
         // 监听socket连接
-        socket.onopen = wsOpen;
+        socket.onopen = wsOnOpen;
         //监听socket关闭
-        socket.onclose = wsClose;
+        socket.onclose = wsOnClose;
         // 监听socket错误信息
-        socket.onerror = wsError;
+        socket.onerror = wsOnError;
         // 监听socket消息
-        socket.onmessage = wsMessage;
+        socket.onmessage = wsOnMessage;
     }
 }
 
 
-var wsOpen = function () {
+var wsOnOpen = function () {
     console.log("已经成功连接");
     var sMsg = "";
 
@@ -26,12 +26,12 @@ var wsOpen = function () {
     socket.send(sendMsg);
 }
 
-var wsClose = function () {
+var wsOnClose = function () {
     console.log("已经关闭连接");
 }
 
 
-var wsError = function (evt) {
+var wsOnError = function (evt) {
     console.log("异常:" + evt);
 }
 

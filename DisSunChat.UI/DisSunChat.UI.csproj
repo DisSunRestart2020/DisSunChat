@@ -127,9 +127,7 @@
     <Content Include="JsCommon\EncryptMD5.js" />
     <Content Include="JsCommon\PhoneHelper.js" />
     <Content Include="JsCommon\WebSocketJs.js" />
-    <Content Include="JsCommon\BoxScript3.js" />
-    <Content Include="JsCommon\BoxScript2.js" />
-    <Content Include="JsCommon\BoxScript.js" />
+    <Content Include="JsCommon\ChatIndex.js" />
     <Content Include="JsCommon\jquery-3.4.1.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -143,9 +141,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="StyleCommon\BoxCss3.css" />
-    <Content Include="StyleCommon\BoxCss2.css" />
-    <Content Include="StyleCommon\BoxCss.css" />
+    <Content Include="StyleCommon\ChatIndex.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +172,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Chat\Index.cshtml" />
-    <Content Include="Views\Chat\ChatPage.cshtml" />
-    <Content Include="Views\Chat\DiyLayout.cshtml" />
     <None Include="Views\Shared\_Layout - 复制.cshtml2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -218,7 +212,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>41996</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://172.16.2.4:41996/</IISUrl>
+          <IISUrl>http://localhost:41996/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

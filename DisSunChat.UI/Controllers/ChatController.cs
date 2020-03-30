@@ -16,23 +16,10 @@ namespace DisSunChat.Controllers
         /// <returns></returns>
         // GET: Chat
         public ActionResult Index()
-        {
-
-            //chatServier.CreateChatInfo("客户端" + DateTime.Now.Ticks, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-
-             
+        {    
             return View();
         }
 
-        public ActionResult ChatPage()
-        {
-            return View();
-        }
-
-        public ActionResult DiyLayout()
-        {
-            return View();
-        }
         /// <summary>
         /// 获取数据集列表
         /// </summary>
@@ -41,6 +28,7 @@ namespace DisSunChat.Controllers
         /// <returns></returns>
         public ActionResult GetDataList(int pageIndex,int pageSize)
         {
+            //需要的数据：总共多少条数据、多少页、当前页、排序方式
             List<ChatHistoryView> dataList = chatServier.GetDataList(pageIndex, pageSize);
             var items= dataList.OrderBy(x => x.CreateTime).ToList();
             return Json(items, JsonRequestBehavior.AllowGet);
