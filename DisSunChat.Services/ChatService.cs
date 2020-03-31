@@ -2,6 +2,7 @@
 using DisSunChat.Repos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -33,8 +34,14 @@ namespace DisSunChat.Services
         /// <returns></returns>
         public List<ChatHistoryView> GetDataList(int pageIndex,int pageSize)
         {
-            IQueryable<ChatHistories> items = LoadEntities< ChatHistories>(x=> 1==1);
-            items=items.OrderByDescending(x => x.CreateTime).Skip(pageIndex * pageSize).Take(pageSize);
+            EFPager< ChatHistories,DateTime> pager = new EFPager<ChatHistories, DateTime>();
+            pager.PageIndex = pageIndex;
+            pager.PageSize = pageSize;
+            pager.WhereLambds = x => DbFunctions.DiffDays(x.CreateTime, DateTime.Now) == 0;
+            pager.IsAsc = false;
+            pager.OrderByLambds = o => o.CreateTime;
+
+            IQueryable<ChatHistories> items = LoadEntities<ChatHistories, DateTime>(pager);     
 
             List<ChatHistoryView> list = new List<ChatHistoryView>();
             foreach (var it in items)
@@ -47,7 +54,6 @@ namespace DisSunChat.Services
                 view.ImgIndex = it.ImgIndex;
                 list.Add(view);
             }
-
             return list;
 
 

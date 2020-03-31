@@ -28,7 +28,6 @@ namespace DisSunChat.Controllers
         /// <returns></returns>
         public ActionResult GetDataList(int pageIndex,int pageSize)
         {
-            //需要的数据：总共多少条数据、多少页、当前页、排序方式
             List<ChatHistoryView> dataList = chatServier.GetDataList(pageIndex, pageSize);
             var items= dataList.OrderBy(x => x.CreateTime).ToList();
             return Json(items, JsonRequestBehavior.AllowGet);
