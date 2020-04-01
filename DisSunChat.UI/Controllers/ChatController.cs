@@ -28,9 +28,9 @@ namespace DisSunChat.Controllers
         /// <returns></returns>
         public ActionResult GetDataList(int pageIndex,int pageSize)
         {
-            List<ChatHistoryView> dataList = chatServier.GetDataList(pageIndex, pageSize);
-            var items= dataList.OrderBy(x => x.CreateTime).ToList();
-            return Json(items, JsonRequestBehavior.AllowGet);
+            UIPager pager = chatServier.GetDataList(pageIndex, pageSize);
+            
+            return Json(pager, JsonRequestBehavior.AllowGet);
         }
     }
 }

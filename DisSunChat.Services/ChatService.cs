@@ -32,16 +32,24 @@ namespace DisSunChat.Services
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<ChatHistoryView> GetDataList(int pageIndex,int pageSize)
+        public UIPager GetDataList(int pageIndex,int pageSize)
         {
+            UIPager uip = new UIPager();
+
             EFPager< ChatHistories,DateTime> pager = new EFPager<ChatHistories, DateTime>();
             pager.PageIndex = pageIndex;
             pager.PageSize = pageSize;
-            pager.WhereLambds = x => DbFunctions.DiffDays(x.CreateTime, DateTime.Now) == 0;
+            //pager.WhereLambds = x => DbFunctions.DiffDays(x.CreateTime, DateTime.Now) == 0;
+            pager.WhereLambds = x => 1==1;
             pager.IsAsc = false;
             pager.OrderByLambds = o => o.CreateTime;
 
-            IQueryable<ChatHistories> items = LoadEntities<ChatHistories, DateTime>(pager);     
+            IQueryable<ChatHistories> items = LoadEntities<ChatHistories, DateTime>(pager);
+
+            uip.PageSize = pager.PageSize;
+            uip.PageIndex = pager.PageIndex;
+            uip.TotalCount = pager.TotalCount;
+            uip.TotalPages = pager.TotalPages;       
 
             List<ChatHistoryView> list = new List<ChatHistoryView>();
             foreach (var it in items)
@@ -54,10 +62,9 @@ namespace DisSunChat.Services
                 view.ImgIndex = it.ImgIndex;
                 list.Add(view);
             }
-            return list;
 
-
-           
+            uip.ReponseObj = list.OrderBy(x => x.CreateTime).ToList();
+            return uip;           
         }
     }
 }
