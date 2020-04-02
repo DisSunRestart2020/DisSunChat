@@ -62,7 +62,6 @@ namespace DisSunChat
                 };
 
                 helper.WebSocketInit();
-
             }
             catch(Exception ex)
             {

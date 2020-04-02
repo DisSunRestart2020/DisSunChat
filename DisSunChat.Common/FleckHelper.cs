@@ -38,16 +38,18 @@ namespace DisSunChat.Common
 
             wsServer.Start(socket =>
             {         
-                socket.OnOpen = () => {                    
+                socket.OnOpen = () => {
                     //自定义处理
+                    Utils.SaveLog("WebSocket已经开启");
                     if (this.WsOpenEvent != null)
                     {
                         this.WsOpenEvent();
                     }
                 };
 
-                socket.OnClose = () => {        
+                socket.OnClose = () => {
                     //从连接集合中移除
+                    Utils.SaveLog("WebSocket已经关闭");
                     for (int i= socketListHs.Count-1; i>=0;i--)
                     {
                         if (socketListHs[i] == null)
