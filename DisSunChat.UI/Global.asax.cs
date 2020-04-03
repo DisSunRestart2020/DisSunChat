@@ -19,14 +19,13 @@ namespace DisSunChat
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ChatService chatService = new ChatService();
-            //Utils.SaveLog("程序圆形");
             try
             {
 
                 IWebSocketHelper helper = new FleckHelper();
                 helper.WsOpenEvent += () =>
                 {
-                    Utils.SaveLog("WebSocket已经开启");
+                   Utils.SaveLog("WebSocket已经开启");
                     return 1;
                 };
 
@@ -41,7 +40,10 @@ namespace DisSunChat
                     Utils.SaveLog("WebSocket监听到了消息");
                     if (!Convert.ToBoolean(wsocketMsg.ClientData.IsConnSign))
                     {
+
                         chatService.CreateChatInfo(wsocketMsg);
+                        wsocketMsg.ClientData.SMsg = Utils.ReplaceIllegalWord(wsocketMsg.ClientData.SMsg);
+                        //string cctv = Utils.ReplaceIllegalWord(wsocketMsg.ClientData.SMsg);
                     }
                     else
                     {
@@ -50,8 +52,8 @@ namespace DisSunChat
                         wsocketMsg.ClientData.SMsg = traceInfo;
 
                     }
-                //立刻反馈
-                helper.SendMessageToAll(wsocketMsg);
+                    //立刻反馈                   
+                    helper.SendMessageToAll(wsocketMsg);
                     return 1;
                 };
 

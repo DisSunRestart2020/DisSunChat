@@ -55,7 +55,7 @@ namespace DisSunChat.Services
             foreach (var it in items)
             {
                 ChatHistoryView view = new ChatHistoryView();
-                view.ChatContent = it.ChatContent;
+                view.ChatContent = Utils.ReplaceIllegalWord( it.ChatContent);
                 view.CreateTime = it.CreateTime.ToString("yyyy-MM-dd HH:mm:ss");
                 view.ClientName = it.ClientName;
                 view.IdentityMd5 = it.IdentityMd5;

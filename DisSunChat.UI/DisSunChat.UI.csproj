@@ -125,6 +125,7 @@
     <Content Include="images\payfor.jpg" />
     <Content Include="images\praise.jpg" />
     <Content Include="JsCommon\EncryptMD5.js" />
+    <Content Include="JsCommon\illegalWord.txt" />
     <Content Include="JsCommon\PhoneHelper.js" />
     <Content Include="JsCommon\WebSocketJs.js" />
     <Content Include="JsCommon\ChatIndex.js" />
