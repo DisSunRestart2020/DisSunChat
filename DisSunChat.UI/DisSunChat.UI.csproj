@@ -146,6 +146,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
@@ -154,6 +155,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HelloWorld.cs" />
+    <Compile Include="MvcFilter\ActionJsonExceptionFilter.cs" />
+    <Compile Include="MvcFilter\ControllerExceptionFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +176,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Chat\Error.cshtml" />
     <None Include="Views\Shared\_Layout - 复制.cshtml2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

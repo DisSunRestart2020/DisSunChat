@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="ChatHistoryView.cs" />
     <Compile Include="ClientData.cs" />
+    <Compile Include="CommonCode.cs" />
+    <Compile Include="CommonResult.cs" />
     <Compile Include="UIPager.cs" />
     <Compile Include="EFPager.cs" />
     <Compile Include="WebSocketMessage.cs" />
