@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DisSunChat.Common
 {
+    /// <summary>
+    /// 公共的结果返回实体，凡是对外的Api接口，都以这种形式返回，当code=-1时证明接口异常，方便向调用方提供明确又不失安全的诊断信息
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class CommonResult<T>
     {
         public CommonResult(int code,string msg)
