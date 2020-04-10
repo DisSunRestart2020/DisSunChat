@@ -8,7 +8,7 @@
 *Jquery 3.4.1<br>
 *Fleck（长连接websocket）<br>
 *ToolGood.Words（敏感词过滤算法）<br>
-*简单三层结构未涉及IoC（也许后面会用spring.net或castle搞一下）
+*简单三层结构未涉及IoC（后面项目庞大一些后，可能会用spring.net或castle搞一下）
 
 二、项目开发的背景：
 ---------------
@@ -30,7 +30,7 @@ SignalR呢，虽然能实现websocket，但是不纯粹，看了很多demo对项
 
 四、演示Demo，海外服务器稍微慢点。
 ----------------
- ![image](http://github.com/DisSunRestart2020/DisSunChat/raw/master/images/demoUrl.png)
+ ![](https://github.com/DisSunRestart2020/DisSunChat/raw/master/images/demoUrl.png)
 
 五、下面是一些简单的更新日志
 ----------------
