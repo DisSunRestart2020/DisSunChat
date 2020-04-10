@@ -1,14 +1,16 @@
 # DisSunChat公共聊天室
 一、运行环境及涉及技术：
 ------------------
-*.Net FrameWork 4.7.2<br>
-*EF+MVC5.0<br>
-*Code First<br>
-*日志log4Net<br>
-*Jquery 3.4.1<br>
-*Fleck（长连接websocket）<br>
-*ToolGood.Words（敏感词过滤算法）<br>
-*简单三层结构未涉及IoC（后面项目庞大一些后，可能会用spring.net或castle搞一下）
+* Visual Studio 2019<br>
+* SQL SERVER 2008 R2<br>
+* .Net FrameWork 4.7.2<br>
+* EF+MVC5.0<br>
+* Code First<br>
+* 日志log4Net<br>
+* Jquery 3.4.1<br>
+* Fleck（长连接websocket）<br>
+* ToolGood.Words（敏感词过滤算法）<br>
+* 简单三层结构未涉及IoC（后面项目庞大一些后，可能会用spring.net或castle搞一下）
 
 二、项目开发的背景：
 ---------------
@@ -25,7 +27,7 @@ SignalR呢，虽然能实现websocket，但是不纯粹，看了很多demo对项
 4、修改DisSunChat.UI/web.config文件的数据库连接<br>
 5、修改DisSunChat.Repos/App.config文件的数据库连接（跟web.config保持一致）<br>
 6、数据库使用Code First数据迁移技术就可以还原，亲测有效~<br>
-7、用户的唯一性标识identityMd5，目前是通过访问者浏览器型号+手机型号算出来（为什么不用cookie存GuidID？因为微信的cookie不稳定动不动就清除了），然后用端口尾数作为头像序号，所以对方头像第二次上线可能会变化<br>
+7、用户的唯一性标识identityMd5，目前是通过访问者浏览器型号+手机型号算出来（为什么不用cookie存GuidID？因为微信的cookie不稳定动不动就清除了。不过目前这个方案也不完美，依旧存在重复的可能性），然后用端口尾数作为头像序号，所以对方头像第二次上线可能会变化<br>
 8、项目界面是仿微信的，但是由于CSS+Div学艺不精只能做成现在这种半吊子了。<br>
 
 四、演示Demo，海外服务器稍微慢点。
