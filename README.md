@@ -32,7 +32,7 @@ SignalR呢，虽然能实现websocket，但是不纯粹，看了很多demo对项
 
 四、演示Demo，海外服务器稍微慢点。
 ----------------
- ![](http://chat.dissun.com.cn/images/demoUrl.png)
+ ![](https://github.com/DisSunRestart2020/DisSunChat/blob/master/DisSunChat.UI/images/demoUrl.png)
 
 五、下面是一些简单的更新日志
 ----------------
