@@ -25,19 +25,19 @@ namespace DisSunChat
             {
 
                 IWebSocketHelper helper = new FleckHelper();
-                helper.WsOpenEvent += () =>
+                helper.WsOpenEventHandler += () =>
                 {
                    Utils.SaveLog("WebSocket已经开启");
                     return 1;
                 };
 
-                helper.WsCloseEvent += () =>
+                helper.WsCloseEventHandler += () =>
                 {
                     Utils.SaveLog("WebSocket已经关闭");
                     return 1;
                 };
 
-                helper.ListenEvent += (wsocketMsg) =>
+                helper.ListenEventHandler += (wsocketMsg) =>
                 {
                     Utils.SaveLog("WebSocket监听到了消息");
                     if (!Convert.ToBoolean(wsocketMsg.ClientData.IsConnSign))
@@ -57,7 +57,7 @@ namespace DisSunChat
                     return 1;
                 };
 
-                helper.ResponseTextEvent += (wsocketMsg) =>
+                helper.ResponseTextEventHandler += (wsocketMsg) =>
                 {
                     string jsonStr = Utils.ObjectToJsonStr(wsocketMsg);
                     return jsonStr;

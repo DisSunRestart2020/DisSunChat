@@ -13,10 +13,10 @@ namespace DisSunChat.Common
     /// </summary>
     public class FleckHelper:IWebSocketHelper
     {
-        public event SwitchHandle WsOpenEvent;
-        public event SwitchHandle WsCloseEvent;
-        public event ListenHandle ListenEvent;
-        public event ResponseTextHandle ResponseTextEvent;
+        public event SwitchHandle WsOpenEventHandler;
+        public event SwitchHandle WsCloseEventHandler;
+        public event ListenHandle ListenEventHandler;
+        public event ResponseTextHandle ResponseTextEventHandler;
         /// <summary>
         /// 聊天室在线人数
         /// </summary>
@@ -33,17 +33,18 @@ namespace DisSunChat.Common
         public void WebSocketInit()
         {
             string websocketPath = Utils.GetConfig("websocketPath");
-            WebSocketServer wsServer = new WebSocketServer(websocketPath);
-            
+            WebSocketServer wsServer = new WebSocketServer(websocketPath);            
 
             wsServer.Start(socket =>
             {         
+                //以下的设置，每当一个新连接进来，都会生效。
+
                 socket.OnOpen = () => {
                     //自定义处理
                     Utils.SaveLog("WebSocket已经开启");
-                    if (this.WsOpenEvent != null)
+                    if (this.WsOpenEventHandler != null)
                     {
-                        this.WsOpenEvent();
+                        this.WsOpenEventHandler();
                     }
                 };
 
@@ -59,9 +60,9 @@ namespace DisSunChat.Common
                     }
                     PlayerCount = socketListHs.Count;
                     //自定义处理
-                    if (this.WsCloseEvent != null)
+                    if (this.WsCloseEventHandler != null)
                     {
-                        this.WsCloseEvent();
+                        this.WsCloseEventHandler();
                     }
                 };
 
@@ -84,9 +85,9 @@ namespace DisSunChat.Common
                         PlayerCount = socketListHs.Count;
                     }
 
-                    if (this.ListenEvent != null)
+                    if (this.ListenEventHandler != null)
                     {
-                        this.ListenEvent(wsocketMsg);
+                        this.ListenEventHandler(wsocketMsg);
                     }
                 };
 
@@ -100,9 +101,9 @@ namespace DisSunChat.Common
         public void SendMessageToAll(WebSocketMessage wsocketMsg)
         {           
             string resultData = "";
-            if (this.ResponseTextEvent != null)
+            if (this.ResponseTextEventHandler != null)
             {
-                resultData = this.ResponseTextEvent(wsocketMsg);
+                resultData = this.ResponseTextEventHandler(wsocketMsg);
             }
 
             if (!string.IsNullOrWhiteSpace(resultData))
@@ -122,9 +123,9 @@ namespace DisSunChat.Common
         public void SendMessageToMe(WebSocketMessage wsocketMsg)
         {
             string resultData = "";
-            if (this.ResponseTextEvent != null)
+            if (this.ResponseTextEventHandler != null)
             {
-                resultData = this.ResponseTextEvent(wsocketMsg);
+                resultData = this.ResponseTextEventHandler(wsocketMsg);
             }
 
             if (!string.IsNullOrWhiteSpace(resultData))

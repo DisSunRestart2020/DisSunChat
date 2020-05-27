@@ -13,19 +13,19 @@ namespace DisSunChat.Common
         /// <summary>
         /// websocket连通后触发事件
         /// </summary>
-        event SwitchHandle WsOpenEvent;
+        event SwitchHandle WsOpenEventHandler;
         /// <summary>
         /// websocket连接关闭后触发事件
         /// </summary>
-        event SwitchHandle WsCloseEvent;
+        event SwitchHandle WsCloseEventHandler;
         /// <summary>
         /// websocket监听到消息后触发事件
         /// </summary>
-        event ListenHandle ListenEvent;
+        event ListenHandle ListenEventHandler;
         /// <summary>
         /// websocket响应处理事件
         /// </summary>
-        event ResponseTextHandle ResponseTextEvent;
+        event ResponseTextHandle ResponseTextEventHandler;
         /// <summary>
         /// 聊天室在线人数
         /// </summary>
@@ -34,7 +34,6 @@ namespace DisSunChat.Common
             get;
             set;
         }
-
         /// <summary>
         /// websocket初始化
         /// </summary>
