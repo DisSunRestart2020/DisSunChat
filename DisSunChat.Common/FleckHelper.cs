@@ -13,10 +13,38 @@ namespace DisSunChat.Common
     /// </summary>
     public class FleckHelper:IWebSocketHelper
     {
-        public event SwitchHandle WsOpenEventHandler;
-        public event SwitchHandle WsCloseEventHandler;
-        public event ListenHandle ListenEventHandler;
-        public event ResponseTextHandle ResponseTextEventHandler;
+        /// <summary>
+        /// websocket连通后触发事件
+        /// </summary>
+        public Func<int> WsOpenEventHandler
+        {
+            get; set;
+        }
+        /// <summary>
+        /// websocket连接关闭后触发事件
+        /// </summary>
+        public Func<int> WsCloseEventHandler
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// websocket监听到消息后触发事件
+        /// </summary>
+        public Func<WebSocketMessage, int> ListenEventHandler
+        {
+            get;
+
+            set;
+        }
+        /// <summary>
+        /// websocket响应处理事件
+        /// </summary>
+        public Func<WebSocketMessage, string> ResponseTextEventHandler
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// 聊天室在线人数
         /// </summary>

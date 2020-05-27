@@ -13,19 +13,35 @@ namespace DisSunChat.Common
         /// <summary>
         /// websocket连通后触发事件
         /// </summary>
-        event SwitchHandle WsOpenEventHandler;
+        Func<int> WsOpenEventHandler
+        {
+            get;set;
+        }
         /// <summary>
         /// websocket连接关闭后触发事件
         /// </summary>
-        event SwitchHandle WsCloseEventHandler;
+        Func<int>  WsCloseEventHandler
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// websocket监听到消息后触发事件
         /// </summary>
-        event ListenHandle ListenEventHandler;
+        Func<WebSocketMessage,int> ListenEventHandler
+        {
+            get;
+
+            set;
+        }
         /// <summary>
         /// websocket响应处理事件
         /// </summary>
-        event ResponseTextHandle ResponseTextEventHandler;
+        Func<WebSocketMessage ,string> ResponseTextEventHandler
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// 聊天室在线人数
         /// </summary>
@@ -55,15 +71,17 @@ namespace DisSunChat.Common
     /// <summary>
     /// socket开关处理委托
     /// </summary>
-    /// <returns></returns>
-    public delegate int SwitchHandle();
+    /// <returns></returns>    
+    //public delegate int SwitchHandle();
+
     /// <summary>
     /// socket监听处理委托
     /// </summary>
     /// <param name="socketData"></param>
     /// <param name="clientFrom"></param>
     /// <returns></returns>
-    public delegate int ListenHandle(WebSocketMessage wsocketMsg);
+    //public delegate int ListenHandle(WebSocketMessage wsocketMsg);
+
     /// <summary>
     /// 响应文本处理委托
     /// </summary>
@@ -72,5 +90,5 @@ namespace DisSunChat.Common
     /// <param name="cPort"></param>
     /// <param name="cGuid"></param>
     /// <returns></returns>
-    public delegate string ResponseTextHandle(WebSocketMessage wsocketMsg);
+    //public delegate string ResponseTextHandle(WebSocketMessage wsocketMsg);
 }
