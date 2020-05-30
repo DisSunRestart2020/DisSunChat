@@ -12,6 +12,13 @@ namespace DisSunChat.Common
     [Serializable]
     public class WebSocketMessage
     {
+        /// <summary>
+        /// webSocket通信载体初始化
+        /// </summary>
+        /// <param name="cIp"></param>
+        /// <param name="cPort"></param>
+        /// <param name="cGuidID"></param>
+        /// <param name="clientData"></param>
         public WebSocketMessage(string cIp, string cPort, string cGuidID, ClientData clientData)
         {
             this.CIp = cIp;

@@ -1,6 +1,7 @@
 ﻿using Fleck;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace DisSunChat.Common
@@ -13,35 +14,20 @@ namespace DisSunChat.Common
         /// <summary>
         /// websocket连通后触发事件
         /// </summary>
-        Func<int> WsOpenEventHandler
-        {
-            get;set;
-        }
+        event SwitchEventHandler WsOpenEventHandler;
         /// <summary>
         /// websocket连接关闭后触发事件
         /// </summary>
-        Func<int>  WsCloseEventHandler
-        {
-            get;
-            set;
-        }
+        event SwitchEventHandler WsCloseEventHandler;
         /// <summary>
         /// websocket监听到消息后触发事件
         /// </summary>
-        Func<WebSocketMessage,int> ListenEventHandler
-        {
-            get;
-
-            set;
-        }
+        event ListenEventHandler WsListenEventHandler;
         /// <summary>
         /// websocket响应处理事件
         /// </summary>
-        Func<WebSocketMessage ,string> ResponseTextEventHandler
-        {
-            get;
-            set;
-        }
+        event ResponseTextEventHandler WsResponseTextEventHandler;
+
         /// <summary>
         /// 聊天室在线人数
         /// </summary>
@@ -50,6 +36,7 @@ namespace DisSunChat.Common
             get;
             set;
         }
+
         /// <summary>
         /// websocket初始化
         /// </summary>
@@ -68,11 +55,12 @@ namespace DisSunChat.Common
     }
 
 
+    #region 通用委托声明
     /// <summary>
     /// socket开关处理委托
     /// </summary>
-    /// <returns></returns>    
-    //public delegate int SwitchHandle();
+    /// <returns></returns> 
+    public delegate void SwitchEventHandler(object sender, WebsocketEventArgs e);
 
     /// <summary>
     /// socket监听处理委托
@@ -80,15 +68,17 @@ namespace DisSunChat.Common
     /// <param name="socketData"></param>
     /// <param name="clientFrom"></param>
     /// <returns></returns>
-    //public delegate int ListenHandle(WebSocketMessage wsocketMsg);
+    public delegate void ListenEventHandler(object sender, WebsocketEventArgs e);
 
     /// <summary>
-    /// 响应文本处理委托
+    /// 反馈客户端的文本处理委托
     /// </summary>
     /// <param name="socketData"></param>
     /// <param name="cIp"></param>
     /// <param name="cPort"></param>
     /// <param name="cGuid"></param>
     /// <returns></returns>
-    //public delegate string ResponseTextHandle(WebSocketMessage wsocketMsg);
+    public delegate void ResponseTextEventHandler(object sender, WebsocketEventArgs e);
+    #endregion
+
 }

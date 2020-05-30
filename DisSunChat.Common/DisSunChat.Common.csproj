@@ -60,6 +60,7 @@
     <Compile Include="CommonResult.cs" />
     <Compile Include="UIPager.cs" />
     <Compile Include="EFPager.cs" />
+    <Compile Include="WebsocketEventArgs.cs" />
     <Compile Include="WebSocketMessage.cs" />
     <Compile Include="FleckHelper.cs" />
     <Compile Include="IWebSocketHelper.cs" />
