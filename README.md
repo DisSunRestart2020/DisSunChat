@@ -31,8 +31,9 @@ SignalR呢，虽然能实现websocket，但是不纯粹，看了很多demo对项
 8、项目界面是仿微信的，但是由于CSS+Div学艺不精只能做成现在这种半吊子了。<br>
 
 四、演示Demo，海外服务器稍微慢点。
-----------------
- ![](http://chat.dissun.com.cn/images/demoUrl.png)
+---------------- 
+ <img src="http://chat.dissun.com.cn/images/demoUrl.png" width="300" />
+ <img src="http://chat.dissun.com.cn/images/previewUI.jpg" width="300" />
 
 五、下面是一些简单的更新日志
 ----------------
